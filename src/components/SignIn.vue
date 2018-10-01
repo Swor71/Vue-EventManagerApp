@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <h3 class="text-center">Sign In</h3>
     <div class="">
       <div class="form-group row justify-content-center">
@@ -11,7 +11,7 @@
             placeholder="Email"
             v-model="email"
             class="form-control"
-          >
+          />
         </div>
       </div>
       <div class="form-group row justify-content-center">
@@ -23,24 +23,38 @@
             placeholder="Password" 
             v-model="password"
             class="form-control"
-          >
+          />
         </div>
       </div>
-      <button class="btn btn-primary d-flex mx-auto">Sign In</button>
+      <button class="btn btn-primary d-flex mx-auto" @click="signIn">Sign In</button>
     </div>
+    <br>
+    <p class="text-center">{{error.message}}</p>
   </div>
 </template>
 
 <script>
+import { firebaseApp } from '../firebase';
+
 export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: {
+        message: ''
+      }
     };
+  },
+  methods: {
+    signIn() {
+      firebaseApp
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .catch(error => {
+          this.error = error;
+        });
+    }
   }
 };
 </script>
-
-<style>
-</style>
