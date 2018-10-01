@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <form>
     <h3 class="text-center">Sign In</h3>
     <div class="">
       <div class="form-group row justify-content-center">
@@ -26,11 +26,11 @@
           />
         </div>
       </div>
-      <button class="btn btn-primary d-flex mx-auto" @click="signIn">Sign In</button>
+      <button type="submit" class="btn btn-primary d-flex mx-auto" @click="signIn">Sign In</button>
     </div>
     <br>
     <p class="text-center">{{error.message}}</p>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -47,7 +47,8 @@ export default {
     };
   },
   methods: {
-    signIn() {
+    signIn(e) {
+      e.preventDefault();
       firebaseApp
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
