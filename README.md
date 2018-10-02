@@ -1,4 +1,4 @@
-# meetup
+# EventManager
 
 > A Vue.js project
 
