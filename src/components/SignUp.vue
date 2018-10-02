@@ -1,6 +1,6 @@
 <template>
   <form>
-    <h3 class="text-center">Sign In</h3>
+    <h3 class="text-center">Sign Up</h3>
     <div class="">
       <div class="form-group row justify-content-center">
         <label for="email" class="col-md-2 col-form-label">Email:</label>
@@ -26,11 +26,11 @@
           />
         </div>
       </div>
-      <button type="submit" class="btn btn-primary d-flex mx-auto" @click="signIn">Sign In</button>
+      <button type="submit" class="btn btn-primary d-flex mx-auto" @click="signUp">Sign Up</button>
     </div>
     <br>
     <div class="text-center">
-      <router-link to="/signup">Not a member? Sign up here.</router-link>
+      <router-link to="/signin">Already have an account? Sign in here.</router-link>
     </div>
     <p class="text-center">{{error.message}}</p>
   </form>
@@ -50,11 +50,11 @@ export default {
     };
   },
   methods: {
-    signIn(e) {
+    signUp(e) {
       e.preventDefault();
       firebaseApp
         .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .catch(error => {
           this.error = error;
         });

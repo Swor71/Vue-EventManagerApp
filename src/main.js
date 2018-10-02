@@ -7,6 +7,7 @@ import store from './store';
 import App from './components/App';
 import Dashboard from './components/Dashboard';
 import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 Vue.use(VueRouter);
 
@@ -14,7 +15,8 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/dashboard', component: Dashboard },
-    { path: '/signin', component: SignIn }
+    { path: '/signin', component: SignIn },
+    { path: '/signup', component: SignUp }
 ]   
 })
 
