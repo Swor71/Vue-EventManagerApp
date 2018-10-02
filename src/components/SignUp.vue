@@ -32,7 +32,7 @@
     <div class="text-center">
       <router-link to="/signin">Already have an account? Sign in here.</router-link>
     </div>
-    <p class="text-center">{{error.message}}</p>
+    <p class="text-center text-danger">{{error.message}}</p>
   </form>
 </template>
 
